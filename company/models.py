@@ -13,6 +13,6 @@ class Company(models.Model):
 class AssignProduct(models.Model):
     company = models.ForeignKey(Company, verbose_name='Company', blank = False, null = True, related_name = 'company_name')
     branch = models.CharField(verbose_name='Branch name ', max_length=256, blank=False, null=True)
-    product = models.ForeignKey(Product, unique=True, verbose_name='Product', blank = False, null = True, related_name = 'assign_product')
+    product = models.OneToOneField(Product, verbose_name='Product', blank = False, null = True, related_name = 'assign_product')
     place_of_position = models.TextField(verbose_name='Place of position', blank=True, null = True)
     address = models.TextField(verbose_name='Address', blank=True, null = True)

@@ -11,10 +11,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-
+from django.contrib import admin
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -31,6 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'users',
     'product',
     'company',
+    'manageuser'
 ]
 
 MIDDLEWARE = [
@@ -54,10 +55,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ahkrweb.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,6 +71,8 @@ TEMPLATES = [
         },
     },
 ]
+
+#TEMPLATE_LOADERS = 'django.template.loaders.filesystem.Loader'
 
 WSGI_APPLICATION = 'ahkrweb.wsgi.application'
 
@@ -125,3 +129,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+admin.site.site_header = 'AFTER HOUR KEY RELEASE'
+admin.site.site_title = 'AHKR'
+admin.site.index_title = 'Webapplication'
